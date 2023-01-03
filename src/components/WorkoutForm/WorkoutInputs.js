@@ -8,23 +8,13 @@ const inputList = [
     'Weight:'
 ];
 
-const WorkoutInputs = () => {
-
-    const [value, setValue] = React.useState('');
-
-    const handleChange = (e) => {
-        setValue(e.target.value);
-};
-
-  console.log('HEREs YOUR Input VALUE: ' + value );
-  console.log('---------------------------------------------------');
-
+const WorkoutInputs = ({childToParent}) => {
     return(
         <div>   
             {
               inputList.map((x,y) => {
                 return <Stack key={y} spacing={3} padding={1}>
-                            <TextField inputfromfillins={value} onChange={handleChange} id="outlined-basic" label={x} variant="outlined"/>
+                            <TextField onChange={(e) => childToParent(e.target.value)} id="outlined-basic" label={x} variant="outlined"/>
                         </Stack>
               })  
             }

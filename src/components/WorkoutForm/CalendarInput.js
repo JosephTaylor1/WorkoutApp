@@ -12,11 +12,7 @@ const CalendarPicker = () => {
     const handleChange = (newValue) => {
             setValue(newValue);
   };
-
-  console.log('HEREs YOUR CALENDAR VALUE: ' + value );
-  console.log('---------------------------------------------------');
-
-
+  
     return(
         <div>   
             <LocalizationProvider dateAdapter={AdapterDayjs}>
