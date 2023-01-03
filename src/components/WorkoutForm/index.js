@@ -9,23 +9,33 @@ import {
 
 const WorkoutForm = (props) => {
 
-    const handleSubmit = (event) => {
-        console.log('WOW IT WORKED: ' + data);
+    const submissionData = [];
+
+    const handleSubmit = () => {
+        submissionData.push(workoutInputValue);
+        submissionData.push(workoutOption);
+        console.log('WOW IT WORKED: ' + submissionData[1]);
+        alert(submissionData[0] + ' ' + submissionData[1])
+    };
+    /* Retrieves and sets input value for Sets,Reps,Weight */
+    const [ workoutInputValue, setWorkoutData ] = useState('');
+    const getWorkoutInputData = (workoutInput) => {
+        setWorkoutData(workoutInput);
     };
 
-    const [ data, setData ] = useState('');
-
-    const childToParent = (childData) => {
-        setData(childData);
+    /* Retrieves and sets dropdown value for workout type */
+    const [ workoutOption, setWorkoutType ] = useState('');
+    const getWorkoutType = (dropdownOption) => {
+        setWorkoutType(dropdownOption);
     };
 
     return (
         <div>
             <Form onSubmit={handleSubmit} >
                 
-                <WorkoutDropdown />
+                <WorkoutDropdown workoutTypeSelection={getWorkoutType} />
 
-                <WorkoutInputs childToParent={childToParent} />
+                <WorkoutInputs workoutInputData={getWorkoutInputData} />
 
                 <CalendarInput />
 

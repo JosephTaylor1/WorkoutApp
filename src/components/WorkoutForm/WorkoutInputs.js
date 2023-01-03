@@ -8,13 +8,13 @@ const inputList = [
     'Weight:'
 ];
 
-const WorkoutInputs = ({childToParent}) => {
+const WorkoutInputs = ({workoutInputData}) => {
     return(
         <div>   
             {
               inputList.map((x,y) => {
                 return <Stack key={y} spacing={3} padding={1}>
-                            <TextField onChange={(e) => childToParent(e.target.value)} id="outlined-basic" label={x} variant="outlined"/>
+                            <TextField onChange={(e) => workoutInputData(e.target.value)} id="outlined-basic" label={x} variant="outlined"/>
                         </Stack>
               })  
             }
