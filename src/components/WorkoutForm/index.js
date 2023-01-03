@@ -12,21 +12,29 @@ const WorkoutForm = (props) => {
     const submissionData = [];
 
     const handleSubmit = () => {
-        console.log('WOW IT WORKED: ' + workoutInputValue);
         submissionData.push(workoutInputValue);
+        submissionData.push(workoutOption);
+        console.log('WOW IT WORKED: ' + submissionData[1]);
+        alert(submissionData[1])
+    };
+    /* Retrieves and sets input value for Sets,Reps,Weight */
+    const [ workoutInputValue, setWorkoutData ] = useState('');
+    const getWorkoutInputData = (workoutInput) => {
+        setWorkoutData(workoutInput);
     };
 
-    const [ workoutInputValue, setData ] = useState('');
 
-    const getWorkoutInputData = (workoutInput) => {
-        setData(workoutInput);
+    /* Retrieves and sets dropdown value for workout type */
+    const [ workoutOption, setWorkoutType ] = useState('');
+    const getWorkoutType = (dropdownOption) => {
+        setWorkoutType(dropdownOption);
     };
 
     return (
         <div>
             <Form onSubmit={handleSubmit} >
                 
-                <WorkoutDropdown />
+                <WorkoutDropdown workoutTypeSelection={getWorkoutType} />
 
                 <WorkoutInputs workoutInputData={getWorkoutInputData} />
 

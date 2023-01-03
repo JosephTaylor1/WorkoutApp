@@ -24,13 +24,13 @@ const workoutList = [
     'Cable Flies'
 ];
 
-const WorkoutDropdwon = () => {
+const WorkoutDropdwon = ({workoutTypeSelection}) => {
     return (
         <div>
             <Stack spacing={3} padding={1} sx={{ minWidth: 120 }}>
                 <FormControl fullWidth>
                 <InputLabel>Select a Workout:</InputLabel>
-                <Select >
+                <Select onChange={(e) => workoutTypeSelection(e.target.value)}>
                     <MenuItem></MenuItem>
                     {workoutList.map((x, y) => {
                     return <MenuItem key={y} value={x}>{x}</MenuItem>;
