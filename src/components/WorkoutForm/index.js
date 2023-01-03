@@ -9,14 +9,17 @@ import {
 
 const WorkoutForm = (props) => {
 
-    const handleSubmit = (event) => {
-        console.log('WOW IT WORKED: ' + data);
+    const submissionData = [];
+
+    const handleSubmit = () => {
+        console.log('WOW IT WORKED: ' + workoutInputValue);
+        submissionData.push(workoutInputValue);
     };
 
-    const [ data, setData ] = useState('');
+    const [ workoutInputValue, setData ] = useState('');
 
-    const childToParent = (childData) => {
-        setData(childData);
+    const getWorkoutInputData = (workoutInput) => {
+        setData(workoutInput);
     };
 
     return (
@@ -25,7 +28,7 @@ const WorkoutForm = (props) => {
                 
                 <WorkoutDropdown />
 
-                <WorkoutInputs childToParent={childToParent} />
+                <WorkoutInputs workoutInputData={getWorkoutInputData} />
 
                 <CalendarInput />
 
