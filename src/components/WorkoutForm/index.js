@@ -15,14 +15,13 @@ const WorkoutForm = (props) => {
         submissionData.push(workoutInputValue);
         submissionData.push(workoutOption);
         console.log('WOW IT WORKED: ' + submissionData[1]);
-        alert(submissionData[1])
+        alert(submissionData[0] + ' ' + submissionData[1])
     };
     /* Retrieves and sets input value for Sets,Reps,Weight */
     const [ workoutInputValue, setWorkoutData ] = useState('');
     const getWorkoutInputData = (workoutInput) => {
         setWorkoutData(workoutInput);
     };
-
 
     /* Retrieves and sets dropdown value for workout type */
     const [ workoutOption, setWorkoutType ] = useState('');
