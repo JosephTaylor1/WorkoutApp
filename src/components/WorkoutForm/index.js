@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import WorkoutDropdown from './WorkoutDropdown';
 import WorkoutInputs from './WorkoutInputs';
 import Button from '@mui/material/Button';
@@ -10,7 +10,13 @@ import {
 const WorkoutForm = (props) => {
 
     const handleSubmit = (event) => {
-        console.log('WOW IT WORKED: ' + props.inputfromfillins);
+        console.log('WOW IT WORKED: ' + data);
+    };
+
+    const [ data, setData ] = useState('');
+
+    const childToParent = (childData) => {
+        setData(childData);
     };
 
     return (
@@ -19,7 +25,7 @@ const WorkoutForm = (props) => {
                 
                 <WorkoutDropdown />
 
-                <WorkoutInputs value={props.inputfromfillins} />
+                <WorkoutInputs childToParent={childToParent} />
 
                 <CalendarInput />
 

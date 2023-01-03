@@ -25,24 +25,12 @@ const workoutList = [
 ];
 
 const WorkoutDropdwon = () => {
-
-    const [selectValue, setSelectValue] = React.useState("");
-
-    const onChange = (event) => {
-      event.preventDefault();
-      const value = event.target.value;
-      setSelectValue(value);
-    };
-
-    console.log('HEREs YOUR WORKOUT DROPDOWN VALUE: ' + selectValue );
-    console.log('---------------------------------------------------');
-
     return (
         <div>
             <Stack spacing={3} padding={1} sx={{ minWidth: 120 }}>
                 <FormControl fullWidth>
                 <InputLabel>Select a Workout:</InputLabel>
-                <Select onChange={onChange} >
+                <Select >
                     <MenuItem></MenuItem>
                     {workoutList.map((x, y) => {
                     return <MenuItem key={y} value={x}>{x}</MenuItem>;
