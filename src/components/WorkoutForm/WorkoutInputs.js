@@ -2,22 +2,18 @@ import React from 'react';
 import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
 
-const inputList = [
-    'Sets:',
-    'Reps:',
-    'Weight:'
-];
-
 const WorkoutInputs = ({workoutInputData}) => {
     return(
         <div>   
-            {
-              inputList.map((x,y) => {
-                return <Stack key={y} spacing={3} padding={1}>
-                            <TextField onChange={(e) => workoutInputData(e.target.value)} id="outlined-basic" label={x} variant="outlined"/>
-                        </Stack>
-              })  
-            }
+            <Stack  spacing={3} padding={1}>
+                <TextField onChange={(e) => workoutInputData(e.target.value)} id="outlined-basic" label='Sets:' variant="outlined"/>
+            </Stack>
+            <Stack  spacing={3} padding={1}>
+                <TextField onChange={(e) => workoutInputData(e.target.value)} id="outlined-basic" label= 'Reps:' variant="outlined"/>
+            </Stack>
+            <Stack  spacing={3} padding={1}>
+                <TextField onChange={(e) => workoutInputData(e.target.value)} id="outlined-basic" label= 'Weight:' variant="outlined"/>
+            </Stack> 
         </div>
     );
 
