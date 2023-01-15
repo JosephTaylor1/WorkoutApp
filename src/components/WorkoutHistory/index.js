@@ -55,16 +55,11 @@ const  WorkoutHistoryTable = () => {
         getSessions();
     }, [])
 
-    const rows = [
-        { id: 1, date: session.date, workoutType: session.workoutType, sets: session.sets, reps: session.reps, weight: session.weight },
-        { id: 2, date: '01/15/2023', workoutType: 'Bench', sets: '4', reps: '6', weight: '120'}
-    ];
-
     return(
         <div>  
             <Box sx={{ height: 400, width: '100%' }}>
             <DataGrid
-                rows={rows}
+                rows={session}
                 columns={columns}
                 pageSize={5}
                 rowsPerPageOptions={[5]}
