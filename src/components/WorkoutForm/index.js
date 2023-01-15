@@ -6,20 +6,16 @@ import CalendarInput from './CalendarInput';
 import {
     Form
 } from './WorkoutFormElements';
+import { addDoc, collection } from 'firebase/firestore';
+import { db } from '../../firebase-config';
 
 const WorkoutForm = (props) => {
-    const submissionData = [];
 
+    const sessionsCollection = collection(db, 'WorkoutSessions');
 
-    const handleSubmit = () => {
-        submissionData.push(workoutOption);
-        submissionData.push(setsValue);
-        submissionData.push(repsValue);
-        submissionData.push(weightValue);
-
-        console.log('WOW IT WORKED: ' + submissionData[1]);
-        alert('Workout Type: ' + submissionData[0] + ' Sets: ' + submissionData[1] + ' Reps: ' + submissionData[2] + ' Weight: ' + submissionData[3]);
-    };
+    const createWorkoutSession = async () => {
+        await addDoc(sessionsCollection, {reps: repsValue, sets: setsValue, weight: weightValue, workoutType: workoutOption})
+    }
 
     /* Retrieves and sets dropdown value for workout type */
     const [ workoutOption, setWorkoutType ] = useState('');
@@ -47,7 +43,7 @@ const WorkoutForm = (props) => {
 
     return (
         <div>
-            <Form onSubmit={handleSubmit} >
+            <Form onSubmit={createWorkoutSession} >
                 
                 <WorkoutDropdown workoutTypeSelection={getWorkoutType} />
 

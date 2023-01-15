@@ -56,7 +56,7 @@ const  WorkoutHistoryTable = () => {
     }, [])
 
     const rows = [
-        { id: session[0].id, date: session[0].date, workoutType: session[0].workoutType, sets: session[0].sets, reps: session[0].reps, weight: session[0].weight },
+        { id: 1, date: session.date, workoutType: session.workoutType, sets: session.sets, reps: session.reps, weight: session.weight },
         { id: 2, date: '01/15/2023', workoutType: 'Bench', sets: '4', reps: '6', weight: '120'}
     ];
 
