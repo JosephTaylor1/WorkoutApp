@@ -13,10 +13,6 @@ const WorkoutForm = (props) => {
 
     const sessionsCollection = collection(db, 'WorkoutSessions');
 
-    const createWorkoutSession = async () => {
-        await addDoc(sessionsCollection, {reps: repsValue, sets: setsValue, weight: weightValue, workoutType: workoutOption})
-    }
-
     /* Retrieves and sets dropdown value for workout type */
     const [ workoutOption, setWorkoutType ] = useState('');
     const getWorkoutType = (dropdownOption) => {
@@ -41,9 +37,14 @@ const WorkoutForm = (props) => {
         setWorkoutWeight(weight);
     };
 
+    const createWorkoutSession = async () => {
+        await addDoc(sessionsCollection, {reps: repsValue, sets: setsValue, weight: weightValue, workoutType: workoutOption})
+        alert('Workout Info Submitted')
+    }
+
     return (
         <div>
-            <Form onSubmit={createWorkoutSession} >
+            <Form>
                 
                 <WorkoutDropdown workoutTypeSelection={getWorkoutType} />
 
@@ -55,7 +56,7 @@ const WorkoutForm = (props) => {
 
                 <CalendarInput />
 
-                <Button variant="contained" type='submit'>Submit</Button>
+                <Button variant="contained" onClick={createWorkoutSession} >Submit</Button>
 
             </Form>
         </div>
