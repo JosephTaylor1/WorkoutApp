@@ -10,7 +10,7 @@ function App() {
     <Router forceRefresh={true} >
       <Navbar />
       <Routes>
-        <Route path='/' exact component={<Home/>} />
+        <Route path='/' exact element={<Home/>} />
         <Route path='/addAWorkout' element={<AddAWorkout/>} />
         <Route path='/workoutHistory' element={<WorkoutHistory/>} />
       </Routes>
