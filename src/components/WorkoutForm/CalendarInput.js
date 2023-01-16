@@ -6,13 +6,13 @@ import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 
-const CalendarPicker = () => {
+const CalendarPicker = () => {  
     const [value, setValue] = React.useState(dayjs());
 
     const handleChange = (newValue) => {
-            setValue(newValue);
-  };
-  
+        setValue(newValue);
+    };
+
     return(
         <div>   
             <LocalizationProvider dateAdapter={AdapterDayjs}>

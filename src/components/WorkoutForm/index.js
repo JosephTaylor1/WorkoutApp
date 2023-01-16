@@ -8,6 +8,7 @@ import {
 } from './WorkoutFormElements';
 import { addDoc, collection } from 'firebase/firestore';
 import { db } from '../../firebase-config';
+import dayjs from 'dayjs';
 
 const WorkoutForm = (props) => {
 
@@ -37,8 +38,13 @@ const WorkoutForm = (props) => {
         setWorkoutWeight(weight);
     };
 
+    /* Retrieves and sets input value for Calendar Date */
+    const [ dateValue, setWorkoutDate ] = useState(dayjs());
+    const getDateData = (date) => {
+        setWorkoutDate(date);
+    }
     const createWorkoutSession = async () => {
-        await addDoc(sessionsCollection, {reps: repsValue, sets: setsValue, weight: weightValue, workoutType: workoutOption})
+        await addDoc(sessionsCollection, {date: dateValue.toString(), reps: repsValue, sets: setsValue, weight: weightValue, workoutType: workoutOption})
         alert('Workout Info Submitted')
     }
 
@@ -54,7 +60,7 @@ const WorkoutForm = (props) => {
 
                 <WorkoutInputs workoutInputData={getWorkoutWeightData} labelText={'Weight'} />
 
-                <CalendarInput />
+                <CalendarInput value={getDateData} />
 
                 <Button variant="contained" onClick={createWorkoutSession} >Submit</Button>
 
