@@ -58,7 +58,7 @@ const WorkoutForm = (props) => {
 
                 <WorkoutInputs workoutInputData={getWorkoutRepData} labelText={'Reps:'} />
 
-                <WorkoutInputs workoutInputData={getWorkoutWeightData} labelText={'Weight'} />
+                <WorkoutInputs workoutInputData={getWorkoutWeightData} labelText={'Weight:'} />
 
                 <CalendarInput value={getDateData} />
 
