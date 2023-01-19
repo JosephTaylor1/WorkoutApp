@@ -57,11 +57,11 @@ const  WorkoutHistoryTable = () => {
 
     return(
         <div>  
-            <Box sx={{ height: 400, width: '100%' }}>
+            <Box sx={{ height: 600, width: '100%' }}>
             <DataGrid
                 rows={session}
                 columns={columns}
-                pageSize={5}
+                pageSize={15}
                 rowsPerPageOptions={[5]}
                 disableSelectionOnClick
                 experimentalFeatures={{ newEditingApi: true }}
