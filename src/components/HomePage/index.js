@@ -12,7 +12,6 @@ const HomePage = (props) => {
 
     const [registerEmail, setRegisterEmail] = useState('');
     const [registerPassword, setRegisterPassword] = useState('');
-
     
     const [loginEmail, setLoginEmail] = useState('');
     const [loginPassword, setLoginPassword] = useState('');
@@ -20,22 +19,24 @@ const HomePage = (props) => {
     const [ user, setUser ] = useState({});
 
     onAuthStateChanged(auth, (currentUser) => {
-        setUser(currentUser);
+        if(currentUser) {
+            setUser(currentUser);
+        }
     });
 
     const register = async () => {
         try {
-          const user = await createUserWithEmailAndPassword(auth, registerEmail, registerPassword);
-          console.log(user)
+          await createUserWithEmailAndPassword(auth, registerEmail, registerPassword);
+          await alert(registerEmail + '  is created');
         } catch (error) {
-            console.log(error.message)
+            await console.log(error.message)
         }
     };
 
     const login = async () => {
         try {
-            const user = await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
-            console.log(user)
+            await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
+            await alert('Logged in as ' + loginEmail);
           } catch (error) {
               console.log(error.message)
           }
@@ -43,6 +44,8 @@ const HomePage = (props) => {
 
     const logout = async () =>{
         await signOut(auth);
+        await alert(user.email + '  is now logged out');
+        await setUser('');
     };
 
     return(
@@ -67,10 +70,8 @@ const HomePage = (props) => {
                     <Button onClick={login} variant="contained">Login</Button>
                 </Stack>
 
-                <h4>Logged In As:</h4>
-                {user?.email}
+                <h4>Logged in as: </h4> {user ? user.email : ''}
 
-    
                 <Stack>
                     <Button onClick={logout} variant="contained">Sign Out</Button>
                 </Stack>
